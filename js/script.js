@@ -53,8 +53,7 @@ async function displayPopularShows() {
     const { results } = await fetchAPIData('tv/popular');
 
     const div = document.createElement('div');
-    div.classList.add('card');
-    let text = `${results.length} results`;
+    let text = 'abc';
     div.innerHTML = text;
     document.querySelector('#popular-shows').appendChild(div);
     
