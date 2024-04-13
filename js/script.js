@@ -50,37 +50,39 @@ async function displayPopularMovies() {
 
 // Display 20 most popular tv shows
 async function displayPopularShows() {
-    const { results } = await fetchAPIData('movie/popular');
+    const { results } = await fetchAPIData('tv/popular');
+
+    console.log(results);
     
-    results.forEach(movie => {
+    results.forEach(show => {
         const div = document.createElement('div');
         div.classList.add('card');
         div.innerHTML = `
-          <a href="movie-details.html?id=${movie.id}">
+          <a href="tv-details.html?id=${show.id}">
             ${
-                movie.poster_path ?
+                show.poster_path ?
                     `<img
-                        src="https://image.tmdb.org/t/p/w500${movie.poster_path}"
+                        src="https://image.tmdb.org/t/p/w500${show.poster_path}"
                         class="card-img-top"
-                        alt="${movie.title}"
+                        alt="${show.name}"
                     />`
                     :
                     `<img
                         src="../images/no-image.jpg"
                         class="card-img-top"
-                        alt="${movie.title}"
+                        alt="${show.name}"
                     />`
             }
           </a>
           <div class="card-body">
-            <h5 class="card-title">${movie.title}</h5>
+            <h5 class="card-title">${show.title}</h5>
             <p class="card-text">
-              <small class="text-muted">Release: ${movie.release_date}</small>
+              <small class="text-muted">Air Date: ${show.first_air_date}</small>
             </p>
           </div>`;
 
           document.querySelector('#popular-shows').appendChild(div);
-    });
+    })
 }
 
 // Display Movie Details
@@ -472,8 +474,7 @@ function init() {
             displayPopularMovies();
             break;
         case '/shows.html':
-            // displayPopularShows();
-            displayPopularMovies();
+            displayPopularShows();
             break;
         case '/movie-details.html':
             displayMovieDetails();
