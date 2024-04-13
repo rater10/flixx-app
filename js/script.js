@@ -52,7 +52,9 @@ async function displayPopularMovies() {
 async function displayPopularShows() {
     const { results } = await fetchAPIData('tv/popular');
 
-    console.log(results);
+    results.forEach(show => {
+        console.log(show);
+    });
     
     results.forEach(show => {
         const div = document.createElement('div');
@@ -64,20 +66,20 @@ async function displayPopularShows() {
                     `<img
                         src="https://image.tmdb.org/t/p/w500${show.poster_path}"
                         class="card-img-top"
-                        alt="${show.name}"
+                        alt="${show.title}"
                     />`
                     :
                     `<img
                         src="../images/no-image.jpg"
                         class="card-img-top"
-                        alt="${show.name}"
+                        alt="${show.title}"
                     />`
             }
           </a>
           <div class="card-body">
-            <h5 class="card-title">${show.title}</h5>
+            <h5 class="card-title">${show.name}</h5>
             <p class="card-text">
-              <small class="text-muted">Air Date: ${show.first_air_date}</small>
+              <small class="text-muted">Release: ${show.first_air_date}</small>
             </p>
           </div>`;
 
