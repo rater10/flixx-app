@@ -79,7 +79,7 @@ async function displayPopularShows() {
             </p>
           </div>`;
 
-          document.querySelector('#popular-movies').appendChild(div);
+          document.querySelector('#popular-shows').appendChild(div);
     });
 }
 
