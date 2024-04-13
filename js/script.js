@@ -51,6 +51,12 @@ async function displayPopularMovies() {
 // Display 20 most popular tv shows
 async function displayPopularShows() {
     const { results } = await fetchAPIData('tv/popular');
+
+    const div = document.createElement('div');
+    div.classList.add('card');
+    let text = `${results.length} results`;
+    div.innerHTML = text;
+    document.querySelector('#popular-shows').appendChild(div);
     
     results.forEach(show => {
         const div = document.createElement('div');
