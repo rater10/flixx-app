@@ -238,7 +238,7 @@ function displayBackgroundImage(type, backgroundPath) {
 
 // Search Movies/Shows
 async function search() {
-    const queryString = window.location.search;
+    const queryString = window.location.search; // the query string portion of the URL (part of URL that follows '?', containing key-value pairs separated by '&')
     const urlParams = new URLSearchParams(queryString);
 
     global.search.type = urlParams.get('type');
